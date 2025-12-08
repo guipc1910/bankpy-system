@@ -26,7 +26,7 @@ Realizar saques com validação
 
 Verificar saldo
 
-Extrato simples
+Extrato simples (estou trabalhando nisso)
 
 Estrutura modular para facilitar melhorias
 
