@@ -1,8 +1,25 @@
+import sqlite3
+
+conxao = sqlite3.connect("banco_bank.db")
+cursor = conxao.cursor()
+
+cursor.execute("""CREATE TABLE IF NOT EXISTS contas_bancarias(
+               id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                nome TEXT NOT NULL,
+               senha TEXT NOT NULL UNIQUE,
+                saldo FLOAT NOT NULL)""")
+
 def cadastro():
     print('CADASTRO'.center(30))
     nome = str(input('qual é seu nome para conta? ')) #pedi o nome
     senha = str(input('qual é sua senha? '))
     saldo = 0
+
+    cursor.execute("""INSERT INTO contas_bancarias(nome, senha, saldo) VALUES
+    ('nome', 'senha', 'saldo')""")
+
+    cursor.execute("""SELECT * FROM contas_bancarias""")
+    conxao.commit()
     return nome, senha, saldo
 
 nome, senha, saldo = cadastro()
@@ -64,4 +81,3 @@ while opcao != 5:
         print('saindo do bankpy!')
     else:
         print('opção invalida')
-
